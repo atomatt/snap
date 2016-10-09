@@ -1,0 +1,45 @@
+name: gmusic
+version: 0.5.0-1
+summary: A collection of tools to manage your Google Play Music.
+description: |
+  Delete, download, search, sync, and upload tracks to and from Google Play
+  Music. (Uses the unofficial gmusicapi that is not supported nor endorsed by
+  Google.)
+
+apps:
+  delete:
+    command: ./bin/gmdelete
+    plugs:
+      - network
+  download:
+    command: ./bin/gmdownload
+    plugs:
+      - home
+      - network
+      - removable-media
+  search:
+    command: ./bin/gmsearch
+    plugs:
+      - network
+  sync:
+    command: ./bin/gmsync
+    plugs:
+      - home
+      - network
+      - removable-media
+  upload:
+    command: ./bin/gmupload
+    plugs:
+      - home
+      - network
+      - removable-media
+
+parts:
+  gmusicapi-scripts:
+    plugin: python
+    python-packages:
+      - gmusicapi-scripts==0.5.0
+    build-packages:
+      - libssl-dev
+    stage-packages:
+      - ffmpeg
