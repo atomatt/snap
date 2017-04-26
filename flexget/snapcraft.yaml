@@ -1,0 +1,22 @@
+name: flexget
+version: 2.8.4-1
+summary: FlexGet is a multipurpose automation tool for all of your media
+description: |
+  FlexGet is a program aimed to automate downloading or processing content
+  (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages,
+  various sites and more.
+
+apps:
+  flexget:
+    command: ./bin/flexget
+    plugs:
+      - home
+      - network
+      - removable-media
+
+parts:
+  flexget:
+    plugin: python
+    python-packages:
+      - flexget==2.8.4
+      - transmissionrpc==0.11
